@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f3a3901-e38f-4025-93bc-9c34a5c40ded" name="Changes" comment="nada">
-      <change beforePath="$PROJECT_DIR$/app/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user_service.py" afterDir="false" />
+    <list default="true" id="8f3a3901-e38f-4025-93bc-9c34a5c40ded" name="Changes" comment="nadota">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +85,28 @@
       <option name="project" value="LOCAL" />
       <updated>1771390613657</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="nada">
+      <option name="closed" value="true" />
+      <created>1771390720589</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1771390720589</updated>
+    </task>
+    <task id="LOCAL-00005" summary="nadota">
+      <option name="closed" value="true" />
+      <created>1771390778306</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1771390778306</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="nada" />
-    <option name="LAST_COMMIT_MESSAGE" value="nada" />
+    <MESSAGE value="nadota" />
+    <option name="LAST_COMMIT_MESSAGE" value="nadota" />
   </component>
 </project>
