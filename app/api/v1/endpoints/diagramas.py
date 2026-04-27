@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Header
+from fastapi import APIRouter, Depends, HTTPException, status, Header, Path, Query
 from sqlalchemy.orm import Session
 from app.database.connection import get_db
 from app.schemas.diagram import (
@@ -16,8 +16,8 @@ router = APIRouter(
 
 @router.post("/", response_model=DiagramResponse, status_code=status.HTTP_201_CREATED)
 def crear_diagrama(
-    proyecto_id: int,
-    diagrama_create: DiagramCreate,
+    proyecto_id: int = Query(..., description="ID del proyecto", gt=0),
+    diagrama_create: DiagramCreate = None,
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
@@ -43,8 +43,8 @@ def crear_diagrama(
 
 @router.get("/{diagrama_id}", response_model=DiagramResponse)
 def obtener_diagrama(
-    diagrama_id: str,
-    proyecto_id: int,
+    diagrama_id: str = Path(..., description="ID del diagrama"),
+    proyecto_id: int = Query(..., description="ID del proyecto", gt=0),
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
@@ -63,9 +63,9 @@ def obtener_diagrama(
 
 @router.get("/proyecto/{proyecto_id}", response_model=DiagramListResponse)
 def listar_diagramas(
-    proyecto_id: int,
-    skip: int = 0,
-    limit: int = 100,
+    proyecto_id: int = Path(..., description="ID del proyecto", gt=0),
+    skip: int = Query(0, description="Número de registros a saltar", ge=0),
+    limit: int = Query(100, description="Número máximo de registros", ge=1, le=1000),
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
@@ -82,9 +82,9 @@ def listar_diagramas(
 
 @router.put("/{diagrama_id}", response_model=DiagramResponse)
 def actualizar_diagrama(
-    diagrama_id: str,
-    proyecto_id: int,
-    diagrama_update: DiagramUpdate,
+    diagrama_id: str = Path(..., description="ID del diagrama"),
+    proyecto_id: int = Query(..., description="ID del proyecto", gt=0),
+    diagrama_update: DiagramUpdate = None,
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
@@ -104,8 +104,8 @@ def actualizar_diagrama(
 
 @router.delete("/{diagrama_id}", response_model=DiagramDeleteResponse)
 def eliminar_diagrama(
-    diagrama_id: str,
-    proyecto_id: int,
+    diagrama_id: str = Path(..., description="ID del diagrama"),
+    proyecto_id: int = Query(..., description="ID del proyecto", gt=0),
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
@@ -127,8 +127,8 @@ def eliminar_diagrama(
 
 @router.get("/proyecto/{proyecto_id}/tipo/{tipo}", response_model=list[DiagramResponse])
 def listar_diagramas_por_tipo(
-    proyecto_id: int,
-    tipo: str,
+    proyecto_id: int = Path(..., description="ID del proyecto", gt=0),
+    tipo: str = Path(..., description="Tipo de diagrama"),
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
@@ -145,9 +145,9 @@ def listar_diagramas_por_tipo(
 
 @router.patch("/{diagrama_id}/guardar-estado", response_model=DiagramResponse)
 def guardar_estado_diagrama(
-    diagrama_id: str,
-    proyecto_id: int,
-    datos: dict,
+    diagrama_id: str = Path(..., description="ID del diagrama"),
+    proyecto_id: int = Query(..., description="ID del proyecto", gt=0),
+    datos: dict = None,
     db: Session = Depends(get_db),
     authorization: str = Header(None),
 ):
