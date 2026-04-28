@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from router.usuarios_router import router as usuarios_router
+from router.diagramas_router import router as diagramas_router
 
 app = FastAPI(
     title="Grafo Generator API",
@@ -19,6 +20,7 @@ app.add_middleware(
 
 # Incluir routers
 app.include_router(usuarios_router)
+app.include_router(diagramas_router)
 
 # Ruta de prueba
 @app.get("/")
